@@ -51,8 +51,8 @@ $(function() {
       processData: false,
       contentType: false
     })
-     .done(function(data){
-     var html = buildHTML(data);
+     .done(function(new_message){
+     var html = buildHTML(new_message);
      $('.messages').append(html);
      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
      $('form')[0].reset();
