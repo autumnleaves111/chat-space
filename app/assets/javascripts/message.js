@@ -30,14 +30,14 @@ $(function() {
         data: {id: id},
         dataType: 'json',
       })
-        .done(function(new_messages){
-          new_messages.forEach(function(message){
-          var html = buildHTML(message);
+        .done(function(new_message){
+          new_message.forEach(function(new_message){
+          var html = buildHTML(new_message);
           $('.messages').append(html);
         });
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
           })
-        .fail(function(new_messages){
+        .fail(function(data){
           alert('自動更新できません。');
         });
       } else {
