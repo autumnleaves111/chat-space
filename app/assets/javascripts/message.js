@@ -22,22 +22,22 @@ $(function() {
   }
 
   var interval = setInterval(function(){
-    var id = $('.message:last').data('id');
+    var message_id = $('.message:last').data('id');
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
       $.ajax({
         url: location.href,
         type: 'GET',
-        data: {id: id},
+        data: {id: message_id},
         dataType: 'json',
       })
-        .done(function(new_message){
-          new_message.forEach(function(new_message){
+        .done(function(new_messages){
+          new_messages.forEach(function(new_message){
           var html = buildHTML(new_message);
           $('.messages').append(html);
         });
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
           })
-        .fail(function(data){
+        .fail(function(){
           alert('自動更新できません。');
         });
       } else {
